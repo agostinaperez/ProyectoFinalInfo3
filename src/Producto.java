@@ -2,12 +2,10 @@ public class Producto {
 
     private String nombre;
     private int stock;
-    private Producto siguiente;
 
     public Producto(String nombre, int stock){
         this.nombre = nombre;
         this.stock = stock;
-        this.siguiente=null;
     }
     public String getNombre(){
         return nombre;
@@ -23,13 +21,14 @@ public class Producto {
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-
+    //Colocar dentro de la implementacion de la lista
+    /*
     public Producto  getSig(){
         return this.siguiente;
     }
 
     public void setSiguiente(Producto p){
         this.siguiente = p;
-    }
+    }*/
 
 }
