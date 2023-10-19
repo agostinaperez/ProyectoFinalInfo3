@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Opciones {
-
+    Inventario inv = new Inventario();
     Scanner sc= new Scanner(System.in);
     public void menu(){
 
@@ -24,14 +24,26 @@ public class Opciones {
         String nombre=sc.nextLine().toUpperCase();
         System.out.println("Ingrese la cantidad de stock del producto a añadir: \n");
         int stock=sc.nextInt();
-        new Producto(nombre, stock);
+        inv.insertar(new Producto(nombre, stock));
+
+        //falta agregarlo al árbol binario
     }
 
-    public void borrar(){}
+    public void borrar(){
+        System.out.println("Ingrese el nombre del producto a añadir: \n");
+        String nombre=sc.nextLine().toUpperCase();
+        inv.borrar(nombre);
 
-    public void mostrar(){}
+        //falta borrar del árbol binario
+    }
+
+    public void mostrar(){
+        inv.mostrar();
+    }
 
     public void buscar(){
+
+        //me da fiaca hacer esto
 
     }
 }
