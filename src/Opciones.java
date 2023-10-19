@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Opciones {
 
+    Scanner sc= new Scanner(System.in);
     public void menu(){
-        Scanner sc= new Scanner(System.in);
 
         int seleccion=0;
 
@@ -20,7 +20,11 @@ public class Opciones {
         } while (seleccion!=9);
     }
     public void agregar(){
-
+        System.out.println("Ingrese el nombre del producto a añadir: \n");
+        String nombre=sc.nextLine().toUpperCase();
+        System.out.println("Ingrese la cantidad de stock del producto a añadir: \n");
+        int stock=sc.nextInt();
+        new Producto(nombre, stock);
     }
 
     public void borrar(){}
