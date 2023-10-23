@@ -8,94 +8,94 @@ public class Organizador {
         //this.depth = 0;
     }
 
-    public void add(Producto x) {
+    public void agregar(Producto x) {
         if ((x.getNombre().compareTo(raiz.getProducto().getNombre())) < 0) {
-            if (raiz.getLeft() == null) {
-                raiz.setLeft(new Nodo<>(x));
+            if (raiz.getIzquierdo() == null) {
+                raiz.setIzquierdo(new Nodo<>(x));
             } else {
-                add(x, raiz.getLeft());
+                agregar(x, raiz.getIzquierdo());
             }
         } else {
-            if (raiz.getRight() == null) {
-                raiz.setRight(new Nodo<>(x));
+            if (raiz.getDerecho() == null) {
+                raiz.setDerecho(new Nodo<>(x));
             } else {
-                add(x, raiz.getRight());
+                agregar(x, raiz.getDerecho());
             }
         }
     }
-    private void add(Producto x, Nodo<Producto> Nodo) {
+    private void agregar(Producto x, Nodo<Producto> Nodo) {
         if ((x.getNombre().compareTo(raiz.getProducto().getNombre())) < 0) {
-            if (Nodo.getLeft() == null) {
-                Nodo.setLeft(new Nodo<>(x));
+            if (Nodo.getIzquierdo() == null) {
+                Nodo.setIzquierdo(new Nodo<>(x));
             } else {
-                add(x, Nodo.getLeft());
+                agregar(x, Nodo.getIzquierdo());
             }
         } else {
-            if (Nodo.getRight() == null) {
-                Nodo.setRight(new Nodo<>(x));
+            if (Nodo.getDerecho() == null) {
+                Nodo.setDerecho(new Nodo<>(x));
             } else {
-                add(x, Nodo.getRight());
+                agregar(x, Nodo.getDerecho());
             }
         }
     }
     public void delete (Producto x) throws Exception {
         if (x.getNombre().equals(raiz.getProducto().getNombre())){
-            if(raiz.getLeft() == null && raiz.getRight() == null) raiz = null;
-            else if (raiz.getRight() == null) raiz = raiz.getLeft();
-            else if (raiz.getLeft() == null) raiz = raiz.getRight();
+            if(raiz.getIzquierdo() == null && raiz.getDerecho() == null) raiz = null;
+            else if (raiz.getDerecho() == null) raiz = raiz.getIzquierdo();
+            else if (raiz.getIzquierdo() == null) raiz = raiz.getDerecho();
             else{
-                Nodo<Producto> aux = raiz.getLeft();
-                raiz = raiz.getRight();
-                Nodo<Producto> aux2 = raiz.getLeft();
+                Nodo<Producto> aux = raiz.getIzquierdo();
+                raiz = raiz.getDerecho();
+                Nodo<Producto> aux2 = raiz.getIzquierdo();
                 if(aux2 != null){
-                    while(aux2.getLeft() != null){
-                        aux2 = aux2.getLeft();
+                    while(aux2.getIzquierdo() != null){
+                        aux2 = aux2.getIzquierdo();
                     }
-                    aux2.setLeft(aux);
+                    aux2.setIzquierdo(aux);
                 }
-                else raiz.setLeft(aux);
+                else raiz.setIzquierdo(aux);
             }
 
         }
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && raiz.getLeft() != null) raiz.setLeft(delete(x, raiz.getLeft()));
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && raiz.getRight() != null) raiz.setRight(delete(x, raiz.getRight()));
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && raiz.getIzquierdo() != null) raiz.setIzquierdo(delete(x, raiz.getIzquierdo()));
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && raiz.getDerecho() != null) raiz.setDerecho(delete(x, raiz.getDerecho()));
         else throw new Exception("El elemento no esta en el arbol");
     }
 
     private Nodo<Producto> delete (Producto x, Nodo<Producto> Nodo) throws Exception {
         if (x.getNombre().equals(raiz.getProducto().getNombre())){
-            if(Nodo.getLeft() == null && Nodo.getRight() == null) Nodo = null;
-            else if (Nodo.getRight() == null) Nodo = Nodo.getLeft();
-            else if (Nodo.getLeft() == null) Nodo = Nodo.getRight() ;
+            if(Nodo.getIzquierdo() == null && Nodo.getDerecho() == null) Nodo = null;
+            else if (Nodo.getDerecho() == null) Nodo = Nodo.getIzquierdo();
+            else if (Nodo.getIzquierdo() == null) Nodo = Nodo.getDerecho() ;
             else{
-                Nodo<Producto> aux = Nodo.getLeft();
-                Nodo = Nodo.getRight();
-                Nodo<Producto> aux2 = Nodo.getLeft();
+                Nodo<Producto> aux = Nodo.getIzquierdo();
+                Nodo = Nodo.getDerecho();
+                Nodo<Producto> aux2 = Nodo.getIzquierdo();
                 if(aux2 != null){
-                    while(aux2.getLeft() != null){
-                        aux2 = aux2.getLeft();
+                    while(aux2.getIzquierdo() != null){
+                        aux2 = aux2.getIzquierdo();
                     }
-                    aux2.setLeft(aux);
+                    aux2.setIzquierdo(aux);
                 }
-                else Nodo.setLeft(aux);
+                else Nodo.setIzquierdo(aux);
             }
         }
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && Nodo.getLeft() != null) Nodo.setLeft(delete(x, Nodo.getLeft()));
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && Nodo.getRight() != null) Nodo.setRight(delete(x, Nodo.getRight()));
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && Nodo.getIzquierdo() != null) Nodo.setIzquierdo(delete(x, Nodo.getIzquierdo()));
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && Nodo.getDerecho() != null) Nodo.setDerecho(delete(x, Nodo.getDerecho()));
         else throw new Exception("El elemento no esta en el arbol");
         return Nodo;
     }
-    public Producto search(Producto x) throws Exception {
+    public Producto buscar(Producto x) throws Exception {
         if (x.getNombre().equals(raiz.getProducto().getNombre())) return raiz.getProducto();
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && raiz.getLeft() != null) return search(x, raiz.getLeft());
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && raiz.getRight() != null) return search(x, raiz.getRight());
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && raiz.getIzquierdo() != null) return buscar(x, raiz.getIzquierdo());
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && raiz.getDerecho() != null) return buscar(x, raiz.getDerecho());
         else throw new Exception("El elemento no esta en el arbol");
     }
 
-    private Producto search(Producto x, Nodo<Producto> node) throws Exception {
+    private Producto buscar(Producto x, Nodo<Producto> node) throws Exception {
         if (x.getNombre().equals(raiz.getProducto().getNombre())) return node.getProducto();
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && node.getLeft() != null) return search(x, node.getLeft());
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && node.getRight() != null) return search(x, node.getRight());
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && node.getIzquierdo() != null) return buscar(x, node.getIzquierdo());
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && node.getDerecho() != null) return buscar(x, node.getDerecho());
         else throw new Exception("El elemento no esta en el arbol");
     }
 }

@@ -31,7 +31,7 @@ public class Opciones {
 
     public void borrar(){
         System.out.println("Ingrese el nombre del producto a añadir: \n");
-        String nombre=sc.nextLine().toUpperCase();
+        String nombre=sc.nextLine().toUpperCase().trim();
         inv.borrar(nombre);
 
         //falta borrar del árbol binario
@@ -42,8 +42,9 @@ public class Opciones {
     }
 
     public void buscar(){
+        System.out.println("Ingrese el nombre del producto a añadir: \n");
+        String nombre=sc.nextLine().toUpperCase().trim();
 
-        //me da fiaca hacer esto
 
     }
 }

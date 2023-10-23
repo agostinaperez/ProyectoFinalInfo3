@@ -1,14 +1,14 @@
 //NODO ARBOL
 public class Nodo<Producto> {
     private Producto prod;
-    private Nodo<Producto> nextleft;
-    private Nodo<Producto> nextright;
+    private Nodo<Producto> izquierdo;
+    private Nodo<Producto> derecho;
 
     public Nodo(Producto p){
 
         prod= p;
-        nextleft = null;
-        nextright= null;
+        izquierdo = null;
+        derecho = null;
     }
 
     public Producto getProducto(){
@@ -16,18 +16,16 @@ public class Nodo<Producto> {
         return prod;
     }
 
-    public Nodo<Producto> getLeft(){
-        return nextleft;
+    public Nodo<Producto> getIzquierdo(){
+        return izquierdo;
     }
-    public Nodo<Producto> getRight(){
-        return nextright;
+    public Nodo<Producto> getDerecho(){
+        return derecho;
     }
 
-    public void setLeft(Nodo<Producto> l){
-        nextleft= l;
-    }
-    public void setRight(Nodo<Producto> r){
-        nextright= r;
+    public void setIzquierdo(Nodo<Producto> l){ izquierdo= l; }
+    public void setDerecho(Nodo<Producto> r){
+        derecho= r;
     }
 
 }
