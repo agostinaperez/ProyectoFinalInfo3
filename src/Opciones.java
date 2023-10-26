@@ -39,9 +39,9 @@ public class Opciones {
 
     public void agregar() {
         System.out.println("Ingrese el nombre del producto a añadir: \n");
+        sc.nextLine();
         String nombre = sc.nextLine();
         nombre = nombre.toUpperCase();
-        sc.nextLine();
         System.out.println("Ingrese la cantidad de stock del producto a añadir: \n");
         int stock = sc.nextInt();
 
@@ -55,7 +55,7 @@ public class Opciones {
         String nombre = sc.nextLine().toUpperCase().trim();
 
         inv.borrar(nombre);
-        organizador.borrar();
+        //organizador.borrar(nombre);
     }
 
     public void mostrar() {
@@ -65,7 +65,7 @@ public class Opciones {
     public void buscar() {
         System.out.println("Ingrese el nombre del producto a buscar: \n");
         String nombre = sc.nextLine().toUpperCase().trim();
-        organizador.buscar(nombre);
+       // organizador.buscar(nombre);
 
     }
 
@@ -73,12 +73,12 @@ public class Opciones {
     public  void cambiarStock(){
         System.out.println("Ingrese el nombre del producto cuyo stock desea cambiar: ");
         String nombre = sc.nextLine().toUpperCase().trim();
-        Producto prod=organizador.buscar(nombre);
-        System.out.println("El stock actual del producto es de: " + prod.getStock() + " unidades.");
+        //Producto prod=organizador.buscar(nombre);
+       // System.out.println("El stock actual del producto es de: " + prod.getStock() + " unidades.");
 
         System.out.println("Ingrese el nuevo stock del producto: ");
         int nuevoStock = sc.nextInt();
-        prod.setStock(nuevoStock);
+      //  prod.setStock(nuevoStock);
 
         System.out.println("El stock del producto ha sido actualizado!");
 

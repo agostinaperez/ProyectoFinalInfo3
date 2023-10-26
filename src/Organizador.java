@@ -3,23 +3,26 @@
 public class Organizador {
     private Nodo<Producto> raiz;
 
-    public Organizador(Producto data) {
-        this.raiz = new Nodo<>(data);
-        //this.depth = 0;
+    public Organizador() {
+        this.raiz = null;
     }
 
     public void agregar(Producto x) {
-        if ((x.getNombre().compareTo(raiz.getProducto().getNombre())) < 0) {
-            if (raiz.getIzquierdo() == null) {
-                raiz.setIzquierdo(new Nodo<>(x));
-            } else {
-                agregar(x, raiz.getIzquierdo());
-            }
+        if (this.raiz == null){
+            raiz = new Nodo<>(x);
         } else {
-            if (raiz.getDerecho() == null) {
-                raiz.setDerecho(new Nodo<>(x));
+            if ((x.getNombre().compareTo(raiz.getProducto().getNombre())) < 0) {
+                if (raiz.getIzquierdo() == null) {
+                    raiz.setIzquierdo(new Nodo<>(x));
+                } else {
+                    agregar(x, raiz.getIzquierdo());
+                }
             } else {
-                agregar(x, raiz.getDerecho());
+                if (raiz.getDerecho() == null) {
+                    raiz.setDerecho(new Nodo<>(x));
+                } else {
+                    agregar(x, raiz.getDerecho());
+                }
             }
         }
     }
@@ -57,8 +60,8 @@ public class Organizador {
             }
 
         }
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && raiz.getIzquierdo() != null) raiz.setIzquierdo(delete(x, raiz.getIzquierdo()));
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && raiz.getDerecho() != null) raiz.setDerecho(delete(x, raiz.getDerecho()));
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && raiz.getIzquierdo() != null) raiz.setIzquierdo(borrar(x, raiz.getIzquierdo()));
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && raiz.getDerecho() != null) raiz.setDerecho(borrar(x, raiz.getDerecho()));
         else throw new Exception("El elemento no esta en el arbol");
     }
 
@@ -80,8 +83,8 @@ public class Organizador {
                 else Nodo.setIzquierdo(aux);
             }
         }
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && Nodo.getIzquierdo() != null) Nodo.setIzquierdo(delete(x, Nodo.getIzquierdo()));
-        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && Nodo.getDerecho() != null) Nodo.setDerecho(delete(x, Nodo.getDerecho()));
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && Nodo.getIzquierdo() != null) Nodo.setIzquierdo(borrar(x, Nodo.getIzquierdo()));
+        else if (x.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && Nodo.getDerecho() != null) Nodo.setDerecho(borrar(x, Nodo.getDerecho()));
         else throw new Exception("El elemento no esta en el arbol");
         return Nodo;
     }
