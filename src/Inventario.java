@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Inventario{
     private Nodo inicio;
     private int tamanio;
@@ -49,14 +53,26 @@ public class Inventario{
     public int getTamanio(){ return tamanio; }
 
     public void mostrar () {
+        List<String> nombres = new ArrayList<>();
         Nodo actual = inicio;
 
-        do {
-            System.out.println("Nombre: "+ actual.getProducto().getNombre() + ", Stock: "+ actual.getProducto().getStock());
+        while (actual != null) {
+            nombres.add(actual.getProducto().getNombre());
             actual = actual.getSiguiente();
+        }
 
-        } while (actual.getSiguiente() != null);
+        Collections.sort(nombres);
 
+        for (String nombre : nombres) {
+            Nodo nodo = inicio;
+            while (nodo != null) {
+                if (nodo.getProducto().getNombre().equals(nombre)) {
+                    System.out.println("Nombre: " + nodo.getProducto().getNombre() + ", Stock: " + nodo.getProducto().getStock());
+                    break;
+                }
+                nodo = nodo.getSiguiente();
+            }
+        }
     }
 
     private static class Nodo {

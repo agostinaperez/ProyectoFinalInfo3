@@ -38,7 +38,7 @@ public class Organizador {
             }
         }
     }
-    public void delete (Producto x) throws Exception {
+    public void borrar (Producto x) throws Exception {
         if (x.getNombre().equals(raiz.getProducto().getNombre())){
             if(raiz.getIzquierdo() == null && raiz.getDerecho() == null) raiz = null;
             else if (raiz.getDerecho() == null) raiz = raiz.getIzquierdo();
@@ -62,7 +62,7 @@ public class Organizador {
         else throw new Exception("El elemento no esta en el arbol");
     }
 
-    private Nodo<Producto> delete (Producto x, Nodo<Producto> Nodo) throws Exception {
+    private Nodo<Producto> borrar (Producto x, Nodo<Producto> Nodo) throws Exception {
         if (x.getNombre().equals(raiz.getProducto().getNombre())){
             if(Nodo.getIzquierdo() == null && Nodo.getDerecho() == null) Nodo = null;
             else if (Nodo.getDerecho() == null) Nodo = Nodo.getIzquierdo();
