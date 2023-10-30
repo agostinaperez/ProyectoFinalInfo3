@@ -25,7 +25,7 @@ public class Inventario{
         tamanio++;
     }
 
-    public void borrar(String nombre) {
+    public void borrar(String nombre) throws Exception {
         if (inicio == null) {
             System.out.println("La lista está vacía! No se puede eliminar!");
         } else {
@@ -48,11 +48,15 @@ public class Inventario{
                 actual = actual.getSiguiente();
             }
         }
+        throw new Exception("El elemento no se encuentra en el inventario");
     }
 
     public int getTamanio(){ return tamanio; }
 
     public void mostrar () {
+        System.out.println("\n-------------------------");
+        System.out.println("INVENTARIO:");
+        System.out.println("-------------------------");
         List<String> nombres = new ArrayList<>();
         Nodo actual = inicio;
 

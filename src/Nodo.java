@@ -1,8 +1,8 @@
 //NODO ARBOL
-public class Nodo<Producto> {
+public class Nodo {
     private Producto prod;
-    private Nodo<Producto> izquierdo;
-    private Nodo<Producto> derecho;
+    private Nodo izquierdo;
+    private Nodo derecho;
 
     public Nodo(Producto p){
 
@@ -16,16 +16,16 @@ public class Nodo<Producto> {
         return prod;
     }
 
-    public Nodo<Producto> getIzquierdo(){
+    public Nodo getIzquierdo(){
         return izquierdo;
     }
-    public Nodo<Producto> getDerecho(){
+    public Nodo getDerecho(){
         return derecho;
     }
 
-    public void setIzquierdo(Nodo<Producto> l){ izquierdo= l; }
-    public void setDerecho(Nodo<Producto> r){
-        derecho= r;
+    public void setIzquierdo(Nodo izquierdo){ this.izquierdo= l; }
+    public void setDerecho(Nodo derecho){
+        this.derecho= r;
     }
 
 }

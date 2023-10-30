@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class Opciones {
     Inventario inv = new Inventario();
 
@@ -11,7 +13,7 @@ public class Opciones {
         int seleccion = 0;
 
         do {
-            System.out.println("Bienvenido al sistema de Gestión de Inventario! \nPor favor, seleccione una opción: \n");
+            System.out.println("\nBienvenido al sistema de Gestión de Inventario! \nPor favor, seleccione una opción: \n");
             System.out.println("--------------------------");
             System.out.println("1.Agregar producto");
             System.out.println("--------------------------");
@@ -24,7 +26,7 @@ public class Opciones {
             System.out.println("5.Modificar el stock de un producto");
             System.out.println("--------------------------");
             System.out.println("9.Salir");
-            System.out.println("--------------------------");
+            System.out.println("--------------------------\n");
             seleccion = sc.nextInt();
             switch (seleccion) {
                 case 1 -> agregar();
@@ -32,7 +34,8 @@ public class Opciones {
                 case 3 -> buscar();
                 case 4 -> mostrar();
                 case 5 -> cambiarStock();
-                case 9 -> System.out.println("¡Muchas gracias por usar nuestro sistema!");
+                case 9 -> salir();
+                default -> System.out.println("¡Ups! La opción seleccionada no es válida. Inténtelo de nuevo");
             }
         } while (seleccion != 9);
     }
@@ -47,15 +50,20 @@ public class Opciones {
 
         Producto prod = new Producto(nombre, stock);
         inv.insertar(prod);
-        organizador.agregar(prod);
+        organizador.agregar(prod, null);
     }
 
-    public void borrar() {
+    public void borrar()  {
         System.out.println("Ingrese el nombre del producto a eliminar: \n");
         String nombre = sc.nextLine().toUpperCase().trim();
 
-        inv.borrar(nombre);
-        //organizador.borrar(nombre);
+        try{
+            Producto producto = organizador.buscarPorNombre(nombre);
+            organizador.borrar(producto);
+            inv.borrar(nombre);
+        } catch (Exception e){
+            System.out.println("El elemento que se desea eliminar no existe, o no se encuentra en el inventario!");
+        }
     }
 
     public void mostrar() {
@@ -65,7 +73,11 @@ public class Opciones {
     public void buscar() {
         System.out.println("Ingrese el nombre del producto a buscar: \n");
         String nombre = sc.nextLine().toUpperCase().trim();
-       // organizador.buscar(nombre);
+        try {
+            organizador.buscarPorNombre(nombre);
+        }catch (Exception e){
+            System.out.println("Aparentemente el elemento que buscas no existe! Intenta nuevamente");
+        }
 
     }
 
@@ -73,14 +85,22 @@ public class Opciones {
     public  void cambiarStock(){
         System.out.println("Ingrese el nombre del producto cuyo stock desea cambiar: ");
         String nombre = sc.nextLine().toUpperCase().trim();
-        //Producto prod=organizador.buscar(nombre);
-       // System.out.println("El stock actual del producto es de: " + prod.getStock() + " unidades.");
+        try {
+            Producto prod = organizador.buscarPorNombre(nombre);
+            System.out.println("El stock actual del producto es de: " + prod.getStock() + " unidades.");
 
-        System.out.println("Ingrese el nuevo stock del producto: ");
-        int nuevoStock = sc.nextInt();
-      //  prod.setStock(nuevoStock);
+            System.out.println("Ingrese el nuevo stock del producto: ");
+            int nuevoStock = sc.nextInt();
+            prod.setStock(nuevoStock);
+            System.out.println("El stock del producto ha sido actualizado!");
+        } catch (Exception e) {
+            System.out.println("Aparentemente el elemento que buscas no existe! Intenta nuevamente");
+        }
 
-        System.out.println("El stock del producto ha sido actualizado!");
+    }
 
+    public void salir(){
+        System.out.println("\n¡Muchas gracias por usar nuestro sistema!");
+        exit(0);
     }
 }
