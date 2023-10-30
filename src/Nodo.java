@@ -1,4 +1,3 @@
-//NODO ARBOL
 public class Nodo {
     private Producto prod;
     private Nodo izquierdo;
@@ -23,9 +22,9 @@ public class Nodo {
         return derecho;
     }
 
-    public void setIzquierdo(Nodo izquierdo){ this.izquierdo= l; }
+    public void setIzquierdo(Nodo izquierdo){ this.izquierdo= izquierdo; }
     public void setDerecho(Nodo derecho){
-        this.derecho= r;
+        this.derecho= derecho;
     }
 
 }

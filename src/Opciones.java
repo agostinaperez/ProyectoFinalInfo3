@@ -47,15 +47,16 @@ public class Opciones {
         nombre = nombre.toUpperCase();
         System.out.println("Ingrese la cantidad de stock del producto a añadir: \n");
         int stock = sc.nextInt();
-
+        sc.nextLine();
         Producto prod = new Producto(nombre, stock);
         inv.insertar(prod);
-        organizador.agregar(prod, null);
+        organizador.agregar(prod);
     }
 
     public void borrar()  {
         System.out.println("Ingrese el nombre del producto a eliminar: \n");
-        String nombre = sc.nextLine().toUpperCase().trim();
+        sc.nextLine();
+        String nombre = sc.nextLine().toUpperCase().replace(" ", "");
 
         try{
             Producto producto = organizador.buscarPorNombre(nombre);
@@ -72,9 +73,11 @@ public class Opciones {
 
     public void buscar() {
         System.out.println("Ingrese el nombre del producto a buscar: \n");
-        String nombre = sc.nextLine().toUpperCase().trim();
+        sc.nextLine();
+        String nombre = sc.nextLine().toUpperCase().replace(" ", "");
         try {
-            organizador.buscarPorNombre(nombre);
+            Producto prod = organizador.buscarPorNombre(nombre);
+            System.out.println("El producto que usted buscó se encuentra en el inventario \nNombre producto: " + prod.getNombre() + " Stock producto: " + prod.getStock());
         }catch (Exception e){
             System.out.println("Aparentemente el elemento que buscas no existe! Intenta nuevamente");
         }
@@ -84,7 +87,8 @@ public class Opciones {
 
     public  void cambiarStock(){
         System.out.println("Ingrese el nombre del producto cuyo stock desea cambiar: ");
-        String nombre = sc.nextLine().toUpperCase().trim();
+        sc.nextLine();
+        String nombre = sc.nextLine().toUpperCase().replace(" ", "");
         try {
             Producto prod = organizador.buscarPorNombre(nombre);
             System.out.println("El stock actual del producto es de: " + prod.getStock() + " unidades.");

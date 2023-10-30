@@ -30,7 +30,7 @@ public class Inventario{
             System.out.println("La lista está vacía! No se puede eliminar!");
         } else {
 
-            if (inicio.getProducto().getNombre().trim().equals(nombre)) {
+            if (inicio.getProducto().getNombre().replace(" ", "").equals(nombre)) {
                 inicio = inicio.getSiguiente();
                 tamanio--;
                 System.out.println("El producto se ha eliminado del inventario con éxito!");
@@ -39,7 +39,7 @@ public class Inventario{
 
             Nodo actual = inicio;
             while (actual.getSiguiente() != null) {
-                if ((actual.getSiguiente().getProducto().getNombre().trim()).equals(nombre)) {
+                if ((actual.getSiguiente().getProducto().getNombre().replace(" ", "")).equals(nombre)) {
                     actual.setSiguiente(actual.getSiguiente().getSiguiente());
                     tamanio--;
                     System.out.println("El producto se ha eliminado del inventario con éxito!");
@@ -72,6 +72,7 @@ public class Inventario{
             while (nodo != null) {
                 if (nodo.getProducto().getNombre().equals(nombre)) {
                     System.out.println("Nombre: " + nodo.getProducto().getNombre() + ", Stock: " + nodo.getProducto().getStock());
+                    System.out.println("--------------------------------- \n");
                     break;
                 }
                 nodo = nodo.getSiguiente();
