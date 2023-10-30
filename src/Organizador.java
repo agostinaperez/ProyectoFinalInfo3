@@ -67,29 +67,30 @@ public class Organizador {
     }
 
 
-    private Nodo borrar (Producto prod, Nodo Nodo) throws Exception {
-        if (prod.getNombre().equals(raiz.getProducto().getNombre())){
-            if(Nodo.getIzquierdo() == null && Nodo.getDerecho() == null) Nodo = null;
-            else if (Nodo.getDerecho() == null) Nodo = Nodo.getIzquierdo();
-            else if (Nodo.getIzquierdo() == null) Nodo = Nodo.getDerecho() ;
+    private Nodo borrar (Producto prod, Nodo nodo) throws Exception {
+        if (prod.getNombre().equals(nodo.getProducto().getNombre())){
+            if(nodo.getIzquierdo() == null && nodo.getDerecho() == null) nodo = null;
+            else if (nodo.getDerecho() == null) nodo = nodo.getIzquierdo();
+            else if (nodo.getIzquierdo() == null) nodo = nodo.getDerecho() ;
             else{
-                Nodo aux = Nodo.getIzquierdo();
-                Nodo = Nodo.getDerecho();
-                Nodo aux2 = Nodo.getIzquierdo();
+                Nodo aux = nodo.getIzquierdo();
+                nodo = nodo.getDerecho();
+                Nodo aux2 = nodo.getIzquierdo();
                 if(aux2 != null){
                     while(aux.getIzquierdo() != null){
                         aux2 = aux2.getIzquierdo();
                     }
                     aux2.setIzquierdo(aux);
                 }
-                else Nodo.setIzquierdo(aux);
+                else nodo.setIzquierdo(aux);
             }
         }
-        else if (prod.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && Nodo.getIzquierdo() != null) Nodo.setIzquierdo(borrar(prod, Nodo.getIzquierdo()));
-        else if (prod.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && Nodo.getDerecho() != null) Nodo.setDerecho(borrar(prod, Nodo.getDerecho()));
+        else if (prod.getNombre().compareTo(raiz.getProducto().getNombre()) < 0 && nodo.getIzquierdo() != null) nodo.setIzquierdo(borrar(prod, nodo.getIzquierdo()));
+        else if (prod.getNombre().compareTo(raiz.getProducto().getNombre()) > 0 && nodo.getDerecho() != null) nodo.setDerecho(borrar(prod, nodo.getDerecho()));
         else throw new Exception("El elemento no esta en el arbol");
-        return Nodo;
+        return nodo;
     }
+    
     public Producto buscarPorNombre(String nombre) throws Exception {
         return buscarPorNombreRecursivo(raiz, nombre);
     }
