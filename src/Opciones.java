@@ -59,8 +59,9 @@ public class Opciones {
         String nombre = sc.nextLine().toUpperCase().replace(" ", "");
 
         try{
-            Producto producto = organizador.buscarPorNombre(nombre);
-            organizador.borrar(producto);
+            //Producto producto = organizador.buscarPorNombre(nombre);
+            //organizador.borrar(producto);
+            organizador.borrar(organizador.buscarPorNombre(nombre));
             inv.borrar(nombre);
         } catch (Exception e){
             System.out.println("El elemento que se desea eliminar no existe, o no se encuentra en el inventario!");
