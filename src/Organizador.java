@@ -5,6 +5,8 @@ public class Organizador {
         this.raiz = null;
     }
 
+    //Recibe un producto e iniciliza un nodo con ese producto
+    //que luego lo agrega al arbol.
     public void agregar(Producto prod) {
         if(raiz==null){
             this.raiz = new Nodo(prod);
@@ -42,6 +44,9 @@ public class Organizador {
             }
         }
     }
+
+    //Recibe un producto y lo elimina del arbol si es que encuentra
+    //coincidencia de el nombre del producto con algun producto ya guardado.
     public void borrar (Producto prod) throws Exception {
         if (prod.getNombre().equals(raiz.getProducto().getNombre())){
             if(raiz.getIzquierdo() == null && raiz.getDerecho() == null) raiz = null;
@@ -90,7 +95,9 @@ public class Organizador {
         else throw new Exception("El elemento no esta en el arbol");
         return nodo;
     }
-    
+
+    //Recibe el nombre de un producto y lo busca en el arbol, si
+    //lo encuentra retorna dicho producto.
     public Producto buscarPorNombre(String nombre) throws Exception {
         return buscarPorNombreRecursivo(raiz, nombre);
     }

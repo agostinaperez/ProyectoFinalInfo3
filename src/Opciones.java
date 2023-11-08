@@ -40,6 +40,7 @@ public class Opciones {
         } while (seleccion != 9);
     }
 
+    //Llama al metodo agregar() del arbol y al metodo insertar() de la lista
     public void agregar() {
         System.out.println("Ingrese el nombre del producto a añadir: \n");
         sc.nextLine();
@@ -53,6 +54,7 @@ public class Opciones {
         organizador.agregar(prod);
     }
 
+    //Llama a los metodos borrar() del arbol y la lista
     public void borrar()  {
         System.out.println("Ingrese el nombre del producto a eliminar: \n");
         sc.nextLine();
@@ -68,10 +70,12 @@ public class Opciones {
         }
     }
 
+    //Llama al metodo mostrar() del inventario
     public void mostrar() {
         inv.mostrar();
     }
 
+    //Llama al metodo buscarPorNombre() del arbol
     public void buscar() {
         System.out.println("Ingrese el nombre del producto a buscar: \n");
         sc.nextLine();
