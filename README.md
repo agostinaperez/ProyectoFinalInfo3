@@ -25,5 +25,7 @@ arbol para ello. Para mostrar un producto se utilizara
 la lista. y ademas, se podra modificar el stock de un
 producto.
 # Compilacion Del Programa
-Para utilizar el programa se debe abrir el archivo MAIN.java y compilarlo. 
+Para utilizar el programa desde la terminal del sistema, se debe abrir la terminal y navegar hasta el directorio src en donde está el proyecto.
+Allí, ejecutar el comando "javac Main.java". Esto compilará el programa. Para ejecutarlo, tipear en la misma terminal "java Main"
+Para utilizar el programa desde la terminal del IDE, se debe abrir el archivo MAIN.java y compilarlo. 
 Una vez compilado se desplegara un menu de opciones.
